@@ -1,4 +1,4 @@
-import team13LoremIpsum.loremipsum as loremipsum
+import loremipsum
 
 def main():
     print("No functions")

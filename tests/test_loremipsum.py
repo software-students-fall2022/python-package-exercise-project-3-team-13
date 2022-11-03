@@ -1,4 +1,2 @@
 import pytest
-from team13LoremIpsum import loremipsum
-
-
+import src.team13LoremIpsum.loremipsum as loremipsum
