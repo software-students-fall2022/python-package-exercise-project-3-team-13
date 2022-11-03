@@ -2,3 +2,33 @@
 # Python Package Exercise
 
 A little exercise to create a Python package, build it, test it, distribute it, and use it. See [instructions](./instructions.md) for details.
+
+# Team Members:
+Kedan Zha 
+
+Bruce wu
+
+Evan Huang
+
+Amaan Khwaja
+
+# Project Description
+
+Lorem ipsum generators for image and texts with styles and customization.
+
+## Lorem Ipsum with length
+
+Input number of characters to get from lorem ipsum. Output a section of lorem ipsum with that length.
+
+## Hacker Lorem Ipsum
+
+Input the programming language of the hacker type. Print out generic hacker-like code upon key press.
+
+## Lorem Ipsum Image
+
+Input height, width, label, and filename for image. Save the image of those dimensions and with that label on the file system
+
+## ASCII Lorem Ipsum 
+
+Input height and width of the character box and the characters to put in it. Output a string of ASCII text fitting those specefications
+
