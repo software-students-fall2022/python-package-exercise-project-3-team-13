@@ -62,20 +62,21 @@ def get_code_snippet(language: str) -> str:
     }
 
     __dirname = os.path.dirname(os.path.abspath(__file__))
-    snippet_file_name = os.path.join(__dirname, language_to_path[language])
 
     try:
-        with open(snippet_file_name) as file:
+        snippet_filename = os.path.normpath(
+            os.path.join(__dirname, language_to_path[language]))
+        with open(snippet_filename) as file:
             return file.read()
-    except FileNotFoundError:
-        raise FileNotFoundError(f"No file for this language: {language}.")
+    except KeyError:
+        raise NotImplementedError(f"{language} is not currently supported")
     except IOError as ioe:
         raise IOError("Unexpected I/O error", ioe)
     except Exception as e:
         raise Exception("Unexpected exception", e)
 
 
-def hackertype(language: str, speed: int = 5) -> None:
+def hackertype(language: str, speed: int = 20) -> None:
     '''
     Starts listening for keyboard presses. On key press,
     print out 'speed' amount of characters from a sample document
@@ -85,7 +86,7 @@ def hackertype(language: str, speed: int = 5) -> None:
     ----------
     language : str
         The coding language of the hacker type to be printed.
-        Supported values include TODO: get supported languages
+        Supported values include python and java
     speed : int, optional
         The number of characters to print out on a single key
         press. (Default is 5.)
@@ -102,4 +103,4 @@ def hackertype(language: str, speed: int = 5) -> None:
 
 
 if __name__ == '__main__':
-    hackertype('python', speed=20)
+    hackertype('python')
