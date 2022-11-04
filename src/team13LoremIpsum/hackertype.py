@@ -1,46 +1,5 @@
 import keyboard
 
-# TODO: I don't think I need this class if I have the iterator function
-#       Create tests for the function to see if it works
-
-
-class LoopingString:
-    '''
-    A wrapper class for a string that allows users to access substrings
-    of size 'chunk_size' forever.
-    '''
-    def __init__(self, string: str, chunk_size: int) -> None:
-        '''
-        Initializer for LoopingString.
-
-        Parameters
-        ----------
-        string: str
-            The string to loop through
-        chunk_size: int
-            The number of characters to return for each iteration
-
-        Returns
-        -------
-        None
-        '''
-        self.string = string
-        self.chunk_size = chunk_size
-
-    def __iter__(self):
-        self.string_length = len(self.string)
-        self.current_index = 0
-        return self
-
-    def __next__(self) -> str:
-        # circular array implementation
-        chunk = ''
-        for i in range(self.chunk_size):
-            chunk += self.string[(self.current_index + i) % self.string_length]
-        self.current_index = (self.current_index + self.chunk_size) \
-            % self.string_length
-        return chunk
-
 
 def looping_string(string: str, chunk_size: int):
     current_index = 0
