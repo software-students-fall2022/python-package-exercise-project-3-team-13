@@ -1,7 +1,25 @@
 import keyboard
+import os
 
 
 def looping_string(string: str, chunk_size: int):
+    '''
+    Creates an iterator that loops over a string forever.
+    Each iteration returns the next chunk of the string
+    of length 'chunk_size'.
+
+    Parameters
+    ----------
+    string : str
+        The string that is being looped.
+    chunk_size : int
+        The size of the substring that is returned
+
+    Returns
+    -------
+    Iterator[str]
+        The next substring that is size chunk_size
+    '''
     current_index = 0
     string_length = len(string)
     while True:
@@ -13,13 +31,41 @@ def looping_string(string: str, chunk_size: int):
 
 
 def get_code_snippet(language: str) -> str:
+    '''
+    Given a coding language, returns a large code snippet
+    written in that language as a raw string.
+
+    Parameters
+    ----------
+    language : str
+        The language of the code snippet.
+
+    Returns
+    -------
+    str
+        The code snippet.
+
+    Raises
+    ------
+    FileNotFoundError
+        Raised if we do not have a snippet for the language
+        provided. Right now, we support python and java.
+    IOError
+        Raised if there was another IO problem with opening the file.
+    Exception
+        Raised for any other miscellaneous exceptions occuring
+        when opening the file.
+    '''
     language_to_path = {
         'python': '../code_snippets/python.txt',
         'java': '../code_snippets/java.txt'
     }
 
+    __dirname = os.path.dirname(os.path.abspath(__file__))
+    snippet_file_name = os.path.join(__dirname, language_to_path[language])
+
     try:
-        with open(language_to_path[language]) as file:
+        with open(snippet_file_name) as file:
             return file.read()
     except FileNotFoundError:
         raise FileNotFoundError(f"No file for this language: {language}.")
