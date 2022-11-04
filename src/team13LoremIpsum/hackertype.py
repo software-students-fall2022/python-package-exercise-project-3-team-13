@@ -1,3 +1,4 @@
+import asyncio
 import keyboard
 import os
 
@@ -76,7 +77,7 @@ def get_code_snippet(language: str) -> str:
         raise Exception("Unexpected exception", e)
 
 
-def hackertype(language: str, speed: int = 20) -> None:
+async def hackertype(language: str, speed: int = 20) -> None:
     '''
     Starts listening for keyboard presses. On key press,
     print out 'speed' amount of characters from a sample document
@@ -99,8 +100,14 @@ def hackertype(language: str, speed: int = 20) -> None:
     code_snippet_iter = looping_string(code_snippet, speed)
     keyboard.on_press(lambda e:
                       print(next(code_snippet_iter), end='', flush=True))
-    keyboard.wait('esc')
+
+    async def run():
+        await keyboard.wait('esc')
+    await run()
 
 
 if __name__ == '__main__':
-    hackertype('python')
+    loop = asyncio.get_event_loop()
+    tasks = [loop.create_task(hackertype('python'))]
+    loop.run_until_complete(asyncio.wait(tasks))
+    loop.close()
