@@ -7,7 +7,6 @@ import os
 
 class TestLoopingString:
 
-    # looping_string
     @pytest.fixture
     def string(self):
         return '0123456789'
@@ -75,4 +74,49 @@ class TestGetCodeSnippet:
 
                 assert expected_val in actual_val
 
-    # hackertype
+
+class TestHackertype:
+
+    @pytest.fixture
+    def mock_on_press_side_effect(self):
+        # sets the side effect of on_press as just
+        # running the callback of on_press
+
+        def mock_keyboard_output(arg):
+            # the only argument to on_press is a lambda function
+            # that takes in one (unused) argument
+            arg(None)
+
+        return mock_keyboard_output
+
+    def test_hackertype_default_output(self,
+                                       mock_on_press_side_effect,
+                                       capsys):
+        with patch('src.team13LoremIpsum.hackertype.keyboard.on_press',
+                   create=True) as on_press_mock,\
+             patch('src.team13LoremIpsum.hackertype.keyboard.wait'):
+
+            on_press_mock.side_effect = mock_on_press_side_effect
+            hackertype.hackertype('python')
+            captured = capsys.readouterr()
+
+            expected_val = '"""Functional tests '
+            actual_val = captured.out
+
+            assert expected_val == actual_val
+
+    def test_hackertype_modified_speed(self,
+                                       mock_on_press_side_effect,
+                                       capsys):
+        with patch('src.team13LoremIpsum.hackertype.keyboard.on_press',
+                   create=True) as on_press_mock,\
+             patch('src.team13LoremIpsum.hackertype.keyboard.wait'):
+
+            on_press_mock.side_effect = mock_on_press_side_effect
+            hackertype.hackertype('python', 5)
+            captured = capsys.readouterr()
+
+            expected_val = '"""Fu'
+            actual_val = captured.out
+
+            assert expected_val == actual_val
