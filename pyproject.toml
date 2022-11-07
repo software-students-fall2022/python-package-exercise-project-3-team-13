@@ -7,10 +7,10 @@ name = "team13LoremIpsum"
 description = "An example of a package developed with pyenv, built with build using setuptools, uploaded to PyPI using twine, and distributed via pip."
 version = "0.0.7"
 authors = [
-  "Kedan Zha",
-  "Evan Huang",
-  "Bruce Wu <bxw201@nyu.edu>",
-  "Amaan Khwaja",
+  {name="Kedan Zha"},
+  {name="Evan Huang"},
+  {name="Bruce Wu"},
+  {name="Amaan Khwaja"}
 ]
 license = { file = "LICENSE" }
 readme = "README.md"
