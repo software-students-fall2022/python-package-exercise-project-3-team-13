@@ -42,15 +42,14 @@ def show_loading_bar(con):
                                   ) + "%" + bar + str("{:.2f}".format(increment)) + "/s", end='\r', flush=True)
 
 
-def penetrate():
+def penetrate(language):
     con = Console()
     show_header(con)
     show_loading_bar(con)
     con.print(
         "Admin privileges acquired... Ready to implant virus code... ", style="bold red")
 
-    language = input("Enter the coding language for hacking: ")
-    hackertype.hackertype(language.replace("\n", ""))
+    hackertype.hackertype(language)
 
     print("\n")
     con.print("\nLogged Out... Successfully implanted", style="bold green")
@@ -58,4 +57,4 @@ def penetrate():
 
 
 if __name__ == '__main__':
-    penetrate()
+    penetrate('python')
