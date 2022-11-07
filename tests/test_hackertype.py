@@ -1,4 +1,3 @@
-# TODO: test hackertype
 import pytest
 from src.team13LoremIpsum import hackertype
 from unittest.mock import patch, mock_open
@@ -117,6 +116,22 @@ class TestHackertype:
             captured = capsys.readouterr()
 
             expected_val = '"""Fu'
+            actual_val = captured.out
+
+            assert expected_val == actual_val
+
+    def test_hackertype_java(self,
+                             mock_on_press_side_effect,
+                             capsys):
+        with patch('src.team13LoremIpsum.hackertype.keyboard.on_press',
+                   create=True) as on_press_mock,\
+             patch('src.team13LoremIpsum.hackertype.keyboard.wait'):
+
+            on_press_mock.side_effect = mock_on_press_side_effect
+            hackertype.hackertype('java')
+            captured = capsys.readouterr()
+
+            expected_val = 'package org.springfr'
             actual_val = captured.out
 
             assert expected_val == actual_val
