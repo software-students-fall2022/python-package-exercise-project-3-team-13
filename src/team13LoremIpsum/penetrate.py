@@ -21,7 +21,7 @@ def show_header(con):
             print(str(3-i) + "...", end='\r')
 
 
-def updatebar(con):
+def show_loading_bar(con):
     bar = "|"+" "*10 + "|"
     progress = 0
     loading_bar_char = "█"
@@ -45,10 +45,13 @@ def updatebar(con):
 def penetrate():
     con = Console()
     show_header(con)
-    updatebar(con)
+    show_loading_bar(con)
     con.print(
-        "Admin privileges acquired... Ready to implant virus code", style="bold red")
-    hackertype.hackertype('python')
+        "Admin privileges acquired... Ready to implant virus code... ", style="bold red")
+
+    language = input("Enter the coding language for hacking: ")
+    hackertype.hackertype(language.replace("\n", ""))
+
     print("\n")
     con.print("\nLogged Out... Successfully implanted", style="bold green")
     sleep(1)
