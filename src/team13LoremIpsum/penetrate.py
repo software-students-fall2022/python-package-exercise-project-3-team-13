@@ -1,5 +1,3 @@
-import keyboard
-import os
 import random
 import math
 from time import sleep
@@ -7,7 +5,7 @@ from time import sleep
 import pyfiglet
 from rich.console import Console
 
-import hackertype
+import src.team13LoremIpsum.hackertype as hackertype
 
 
 def show_header(con):
@@ -15,7 +13,7 @@ def show_header(con):
     con.print(banner, "Penetrating server firewall in...", style="bold green")
     for i in range(0, 4):
         sleep(1)
-        if(i == 3):
+        if (i == 3):
             print("                          ", end="\r")
         else:
             print(str(3-i) + "...", end='\r')
@@ -27,7 +25,7 @@ def show_loading_bar(con):
     loading_bar_char = "█"
 
     while True:
-        if(progress > 10):
+        if (progress > 10):
             print("                          ", end="\r")
             con.print("SUCCESSFUL", style="bold green")
             break
