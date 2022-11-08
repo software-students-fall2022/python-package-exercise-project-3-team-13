@@ -69,7 +69,9 @@ def get_code_snippet(language: str) -> str:
         with open(snippet_filename) as file:
             return file.read()
     except KeyError:
-        raise NotImplementedError(f"{language} is not currently supported")
+        raise NotImplementedError(
+            f"Language {language} is not currently supported"
+        )
     except IOError as ioe:
         raise IOError("Unexpected I/O error", ioe)
     except Exception as e:
