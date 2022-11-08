@@ -1,5 +1,6 @@
 import time
 import src.team13LoremIpsum.hackertype as hackertype
+import src.team13LoremIpsum.penetrate as penetrate
 import sys
 
 
@@ -7,7 +8,8 @@ def main(argv):
     # TODO: to add a new CL function, map the name of it
     #       to the function (from the appropriate module)
     functionMap = {
-        "hackertype": hackertype.hackertype
+        "hackertype": hackertype.hackertype,
+        "penetrate": penetrate.penetrate
     }
     command = argv[0]
     if (command in functionMap.keys()):
