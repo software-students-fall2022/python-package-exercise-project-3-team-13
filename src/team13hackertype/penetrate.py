@@ -6,7 +6,7 @@ import pyfiglet
 import rich
 from rich.console import Console
 
-import src.team13hackertype.hackertype as hackertype
+import team13hackertype.hackertype as hackertype
 #import hackertype as hackertype
 
 
