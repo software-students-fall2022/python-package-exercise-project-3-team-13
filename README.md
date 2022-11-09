@@ -7,11 +7,11 @@ A little exercise to create a Python package, build it, test it, distribute it, 
 
 # Team Members
 
-Kedan Zha
+[Kedan Zha](https://github.com/Zackdan0227) 
 
-Bruce wu
+[Bruce wu](https://github.com/bruce-x-wu)
 
-Evan Huang
+[Evan Huang](https://github.com/EV9H)
 
 Amaan Khwaja
 
@@ -28,3 +28,6 @@ Run `hackertype <language>` to run the classic hackertype program from the old i
 Run `penetrate <language> <text:optional>` to simulate a penetration hack. The program will display your text in a scary looking font before launching into hackertype of your given language. The supported language and usage is the same as hackertype. When done, the program will tell you that you are logging out.
 
 Happy hacking!
+
+# PyPI website
+[team13hackertype](https://pypi.org/project/team13hackertype/0.0.7/)
