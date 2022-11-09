@@ -45,7 +45,7 @@ class TestGetCodeSnippet:
 
         __dirname = os.path.dirname(os.path.abspath(__file__))
         snippet_filename = os.path.normpath(
-            os.path.join(__dirname, '../src/code_snippets/python.txt'))
+            os.path.join(__dirname, '../src/team13LoremIpsum/code_snippets/python.txt'))
 
         with patch('src.team13LoremIpsum.hackertype.open',
                    mock_open(read_data=expected_val), create=True) as m:
