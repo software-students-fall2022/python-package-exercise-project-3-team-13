@@ -3,14 +3,27 @@ import math
 from time import sleep
 
 import pyfiglet
+import rich
 from rich.console import Console
 
 import src.team13LoremIpsum.hackertype as hackertype
+#import hackertype as hackertype
 
 
-def show_header(con):
-    banner = pyfiglet.figlet_format("DARKWEB", font="banner3-D")
-    con.print(banner, "Penetrating server firewall in...", style="bold green")
+def show_header(con, text="DARKWEB", style="bold green"):
+    '''
+
+    Parameters 
+    ----------
+    con: rich.console
+        supplied in penetrate()
+    text: str, optional 
+        The text shown in the banner (default "DARKWEB"), suggested maximum length is 7 characters.
+    style: str, optional
+        The style for Console print of emphasized text (default "bold red")
+    '''
+    banner = pyfiglet.figlet_format(text, font="banner3-D")
+    con.print(banner, "Penetrating server firewall in...", style=style)
     for i in range(0, 4):
         sleep(1)
         if (i == 3):
@@ -19,7 +32,7 @@ def show_header(con):
             print(str(3-i) + "...", end='\r')
 
 
-def show_loading_bar(con):
+def show_loading_bar(con, loading_bar_speed):
     bar = "|"+" "*10 + "|"
     progress = 0
     loading_bar_char = "█"
@@ -31,7 +44,7 @@ def show_loading_bar(con):
             break
         else:
             sleep(0.3)
-            increment = random.random()
+            increment = random.random() * loading_bar_speed
             if math.floor(progress) < math.floor(progress + increment):
                 bar = "[" + math.floor(progress+increment) * loading_bar_char + \
                     (10-math.floor(progress+increment)) * "_" + "]"
@@ -40,18 +53,62 @@ def show_loading_bar(con):
                                   ) + "%" + bar + str("{:.2f}".format(increment)) + "/s", end='\r', flush=True)
 
 
-def penetrate(language):
+def penetrate(language, text="DARKWEB", loading_bar_speed=1.0, emphasis_style="bold red", notification_style="bold green"):
+    '''
+
+    Parameters 
+    ----------
+    language : str
+        The coding language of the hacker type to be printed.
+        Supported values include python and java. See hackertype.py.
+
+    text: str, optional 
+        The text shown in the banner (default "DARKWEB"), suggested maximum length is 7 characters.
+
+    loading_bar_speed : float, optional 
+        The speed of loading bar progress. (default is 1)
+
+    emphasis_style: str, optional
+        The style for Console print of emphasized text (default "bold red")
+        See: https://rich.readthedocs.io/en/stable/style.html
+
+    notification_style: str, optional
+        The style for Console print of emphasized text, used in show_header (default "bold green")
+    '''
     con = Console()
-    show_header(con)
-    show_loading_bar(con)
-    con.print(
-        "Admin privileges acquired... Ready to implant virus code... ", style="bold red")
+    if (len(text) > 7):
+        raise UserWarning(
+            "Incorrect Dispaly: Text length should be less than 8.")
+    try:
 
-    hackertype.hackertype(language)
+        show_header(con, text="DARKWEB", style=notification_style)
 
-    print("\n")
-    con.print("\nLogged Out... Successfully implanted", style="bold green")
-    sleep(1)
+        # loading_bar_speed should be larger than 0
+        if (loading_bar_speed <= 0):
+            loading_bar_speed = 1.0
+        show_loading_bar(con, loading_bar_speed)
+
+        con.print(
+            "Admin privileges acquired... Ready to implant virus code... ", style=emphasis_style)
+
+        hackertype.hackertype(language)
+
+        print("\n")
+        con.print("\nLogged Out... Successfully implanted",
+                  style=notification_style)
+        sleep(1)
+
+    except NotImplementedError:
+        raise NotImplementedError(
+            f"style of {notification_style} and/or {emphasis_style} is not supported"
+        )
+    except rich.errors.MissingStyle:
+        raise ValueError(
+            f"style of {notification_style} and/or {emphasis_style} is not supported"
+        )
+
+    except Exception as e:
+        raise Exception("Unexpected exception", e)
 
 
 if __name__ == '__main__':
