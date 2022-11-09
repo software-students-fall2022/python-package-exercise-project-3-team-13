@@ -6,15 +6,11 @@
 
 A little exercise to create a Python package, build it, test it, distribute it, and use it. See [instructions](./instructions.md) for details.
 
-## Team Members
+## Installation
 
-Kedan Zha
-
-Bruce Wu
-
-Evan Huang
-
-Amaan Khwaja
+```sh
+python -m pip install team13hackertype==1.0.4
+```
 
 ## Project Description
 
@@ -151,3 +147,13 @@ View an example usage of the functions [here](./example.py).
 5. The package is now available to you in `src/team13hackertype`.
 6. Run the tests. (`python -m pytest ./tests`)
 7. To build, run `python -m build`.
+
+## Team Members
+
+Kedan Zha
+
+Bruce Wu
+
+Evan Huang
+
+Amaan Khwaja
