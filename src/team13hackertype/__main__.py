@@ -1,6 +1,6 @@
 import time
-import src.team13LoremIpsum.hackertype as hackertype
-import src.team13LoremIpsum.penetrate as penetrate
+import src.team13hackertype.hackertype as hackertype
+import src.team13hackertype.penetrate as penetrate
 import sys
 
 def display_help():
