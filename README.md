@@ -5,8 +5,9 @@
 
 A little exercise to create a Python package, build it, test it, distribute it, and use it. See [instructions](./instructions.md) for details.
 
-# Team Members:
-Kedan Zha 
+# Team Members
+
+Kedan Zha
 
 Bruce wu
 
@@ -16,21 +17,14 @@ Amaan Khwaja
 
 # Project Description
 
-Lorem ipsum generators for image and texts with styles and customization.
+Hackertype lets you pretend you are the elite hacker you always you knew you were in your heart of hearts.
 
-## Lorem Ipsum with length
+## Hackertype
 
-Input number of characters to get from lorem ipsum. Output a section of lorem ipsum with that length.
+Run `hackertype <language>` to run the classic hackertype program from the old internet days. Press keys to generate programming snippets from the given language and press `esc` to finish. Currently supported languages are `python` and `java`.
 
-## Hacker Lorem Ipsum
+## Penetrate
 
-Input the programming language of the hacker type. Print out generic hacker-like code upon key press.
+Run `penetrate <language> <text:optional>` to simulate a penetration hack. The program will display your text in a scary looking font before launching into hackertype of your given language. The supported language and usage is the same as hackertype. When done, the program will tell you that you are logging out.
 
-## Lorem Ipsum Image
-
-Input height, width, label, and filename for image. Save the image of those dimensions and with that label on the file system
-
-## ASCII Lorem Ipsum 
-
-Input height and width of the character box and the characters to put in it. Output a string of ASCII text fitting those specefications
-
+Happy hacking!
