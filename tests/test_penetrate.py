@@ -1,11 +1,11 @@
 import pytest
-from src.team13LoremIpsum import penetrate
+from src.team13hackertype import penetrate
 from unittest.mock import patch
 
 
 class TestPenetrate:
     def test_successful_output(self, capsys):
-        with patch('src.team13LoremIpsum.penetrate.hackertype.hackertype'):
+        with patch('src.team13hackertype.penetrate.hackertype.hackertype'):
             penetrate.penetrate('python')
             captured = capsys.readouterr()
 

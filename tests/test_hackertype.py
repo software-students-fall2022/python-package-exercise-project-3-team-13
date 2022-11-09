@@ -1,5 +1,5 @@
 import pytest
-from src.team13LoremIpsum import hackertype
+from src.team13hackertype import hackertype
 from unittest.mock import patch, mock_open
 import os
 
@@ -45,9 +45,9 @@ class TestGetCodeSnippet:
 
         __dirname = os.path.dirname(os.path.abspath(__file__))
         snippet_filename = os.path.normpath(
-            os.path.join(__dirname, '../src/code_snippets/python.txt'))
+            os.path.join(__dirname, '../src/team13hackertype/code_snippets/python.txt'))
 
-        with patch('src.team13LoremIpsum.hackertype.open',
+        with patch('src.team13hackertype.hackertype.open',
                    mock_open(read_data=expected_val), create=True) as m:
             actual_val = hackertype.get_code_snippet('python')
             m.assert_called_once_with(snippet_filename)
@@ -64,7 +64,7 @@ class TestGetCodeSnippet:
 
     def test_io_exception(self):
         with pytest.raises(IOError) as ioe:
-            with patch('src.team13LoremIpsum.hackertype.open') as m:
+            with patch('src.team13hackertype.hackertype.open') as m:
                 m.side_effect = IOError()
                 hackertype.get_code_snippet('java')
 
@@ -91,9 +91,9 @@ class TestHackertype:
     def test_hackertype_default_output(self,
                                        mock_on_press_side_effect,
                                        capsys):
-        with patch('src.team13LoremIpsum.hackertype.keyboard.on_press',
+        with patch('src.team13hackertype.hackertype.keyboard.on_press',
                    create=True) as on_press_mock,\
-             patch('src.team13LoremIpsum.hackertype.keyboard.wait'):
+             patch('src.team13hackertype.hackertype.keyboard.wait'):
 
             on_press_mock.side_effect = mock_on_press_side_effect
             hackertype.hackertype('python')
@@ -107,9 +107,9 @@ class TestHackertype:
     def test_hackertype_modified_speed(self,
                                        mock_on_press_side_effect,
                                        capsys):
-        with patch('src.team13LoremIpsum.hackertype.keyboard.on_press',
+        with patch('src.team13hackertype.hackertype.keyboard.on_press',
                    create=True) as on_press_mock,\
-             patch('src.team13LoremIpsum.hackertype.keyboard.wait'):
+             patch('src.team13hackertype.hackertype.keyboard.wait'):
 
             on_press_mock.side_effect = mock_on_press_side_effect
             hackertype.hackertype('python', 5)
@@ -123,9 +123,9 @@ class TestHackertype:
     def test_hackertype_java(self,
                              mock_on_press_side_effect,
                              capsys):
-        with patch('src.team13LoremIpsum.hackertype.keyboard.on_press',
+        with patch('src.team13hackertype.hackertype.keyboard.on_press',
                    create=True) as on_press_mock,\
-             patch('src.team13LoremIpsum.hackertype.keyboard.wait'):
+             patch('src.team13hackertype.hackertype.keyboard.wait'):
 
             on_press_mock.side_effect = mock_on_press_side_effect
             hackertype.hackertype('java')

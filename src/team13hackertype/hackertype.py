@@ -57,8 +57,8 @@ def get_code_snippet(language: str) -> str:
         when opening the file.
     '''
     language_to_path = {
-        'python': '../code_snippets/python.txt',
-        'java': '../code_snippets/java.txt'
+        'python': './code_snippets/python.txt',
+        'java': './code_snippets/java.txt'
     }
 
     __dirname = os.path.dirname(os.path.abspath(__file__))
