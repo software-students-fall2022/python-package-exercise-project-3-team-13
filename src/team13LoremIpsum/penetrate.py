@@ -78,10 +78,10 @@ def penetrate(language, text="DARKWEB", loading_bar_speed=1.0, emphasis_style="b
     con = Console()
     if (len(text) > 7):
         raise UserWarning(
-            "Incorrect Dispaly: Text length should be less than 8.")
+            "Incorrect Display: Text length should be less than 8.")
     try:
 
-        show_header(con, text="DARKWEB", style=notification_style)
+        show_header(con, text=text, style=notification_style)
 
         # loading_bar_speed should be larger than 0
         if (loading_bar_speed <= 0):
@@ -98,10 +98,8 @@ def penetrate(language, text="DARKWEB", loading_bar_speed=1.0, emphasis_style="b
                   style=notification_style)
         sleep(1)
 
-    except NotImplementedError:
-        raise NotImplementedError(
-            f"style of {notification_style} and/or {emphasis_style} is not supported"
-        )
+    except NotImplementedError as e:
+        raise e
     except rich.errors.MissingStyle:
         raise ValueError(
             f"style of {notification_style} and/or {emphasis_style} is not supported"
