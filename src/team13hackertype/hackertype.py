@@ -47,7 +47,7 @@ def get_code_snippet(language: str) -> str:
 
     Raises
     ------
-    FileNotFoundError
+    NotImplementedError
         Raised if we do not have a snippet for the language
         provided. Right now, we support python and java.
     IOError
@@ -91,7 +91,7 @@ def hackertype(language: str, speed: int = 20) -> None:
         Supported values include python and java
     speed : int, optional
         The number of characters to print out on a single key
-        press. (Default is 5.)
+        press. (Default is 20.)
 
     Returns
     -------
